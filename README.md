@@ -53,4 +53,4 @@ Django-based web application used for processing and visualizing structured data
   python manage.py runserver
   ```
 
-Access the dashboard at: [http://localhost:8000](http://localhost:8000)
+Access the dashboard at: [http://localhost:8000/data](http://localhost:8000/data)
