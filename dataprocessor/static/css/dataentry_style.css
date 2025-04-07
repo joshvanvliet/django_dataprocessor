@@ -1,0 +1,223 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #27ae60;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
+}
+
+body {
+    background-color: #f5f6fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 30px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#searchInput {
+    border: 2px solid var(--secondary-color);
+    border-radius: 25px;
+    flex: 1;
+    font-size: 16px;
+    padding: 12px;
+}
+
+#searchButton {
+    background: var(--secondary-color);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    padding: 12px 24px;
+    transition: opacity 0.2s;
+}
+
+#searchButton:hover {
+    opacity: 0.9;
+}
+
+.stats-bar {
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    color: var(--secondary-color);
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.table-responsive {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 600px;
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.grade-badge {
+    border-radius: 15px;
+    display: inline-block;
+    font-weight: bold;
+    min-width: 50px;
+    padding: 5px 12px;
+    text-align: center;
+}
+
+.grade-A { background: #27ae60; color: white; }
+.grade-B { background: #2980b9; color: white; }
+.grade-C { background: #f1c40f; color: black; }
+.grade-D { background: #e67e22; color: white; }
+.grade-F { background: #e74c3c; color: white; }
+
+.timestamp {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.postal-code {
+    font-family: monospace;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+tbody td {
+    cursor: pointer;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.copy-notification {
+    animation: fadeInOut 2.5s ease;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 25px;
+    bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    color: white;
+    display: none;
+    font-size: 14px;
+    left: 50%;
+    padding: 12px 24px;
+    position: fixed;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+}
+
+.pagination {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    background: var(--secondary-color);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: opacity 0.2s;
+}
+
+.pagination button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.pagination button:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.current-page {
+    background: #f8f9fa;
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+.page-input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 5px;
+    padding: 8px;
+    text-align: center;
+    width: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .container { padding: 15px; }
+    .stats-bar { flex-direction: column; gap: 15px; }
+    th, td { min-width: 120px; }
+    .postal-code { font-size: 1em; }
+}
+
+@media screen and (max-width: 480px) {
+    h1 { font-size: 2em; }
+    th, td { font-size: 0.9em; padding: 10px; }
+    .stat-value { font-size: 1.5em; }
+    .grade-badge { padding: 3px 8px; }
+    .search-container { flex-direction: column; }
+    #searchButton { width: 100%; }
+}

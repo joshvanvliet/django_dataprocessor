@@ -1,0 +1,27 @@
+[{
+	"dataString0":"http://data.com/file.css",
+	"dataString1":"2014-12-07T12:40:14+00:00",
+	"dataString2":"Tools",
+    "dataString3":"12 45 ED ",
+    "dataString4":"123345",
+    "dataString5":"57389498597830",
+    "text":"This is a textual message to let you know you cannot rely on naming conventions when analyzing data for import"
+},
+{
+	"dataString0":"http://cheese.com/file.php",
+	"dataString1":"2014-11-07T12:40:14+00:00",
+	"dataString2":"Meat",
+    "dataString3":"123 0XB ",
+    "dataString4":"56",
+    "dataString5":"57389498597831",
+    "text":"as you can see, names are swapped and moved around"
+},
+{
+	"dataString0":"http://carrot.com/file.xml",
+	"dataString1":"2014-10-07T12:40:14+00:00",
+	"dataString2":"Fruit",
+    "dataString3":"4564XX ",
+    "dataString4":"99.00",
+    "dataString5":"57389498597832",
+    "text":"so have fun with the mapping module"
+}]

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entries Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dataentry_style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Entries Dashboard</h1>
+        
+        <form method="GET" class="search-container">
+            <input type="text" 
+                   id="searchInput" 
+                   name="q" 
+                   placeholder="Search across all fields..."
+                   value="{{ request.GET.q }}">
+            <button type="submit" id="searchButton">Search</button>
+        </form>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">{{ entries.paginator.count }}</div>
+                <div class="stat-label">Entries Found</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">{{ latest_date|date:"Y-m-d" }}</div>
+                <div class="stat-label">Latest Entry</div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>URL</th>
+                        <th>Date/Time</th>
+                        <th>Category</th>
+                        <th>Postal Code</th>
+                        <th>Optional Field</th>
+                        <th>Numeric Value</th>
+                        <th>ID</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in entries %}
+                    <tr>
+                        <td title="{{ entry.dataString0 }}">
+                            <a href="{{ entry.dataString0 }}" target="_blank" rel="noopener">
+                                {{ entry.dataString0|truncatechars:30 }}
+                            </a>
+                        </td>
+                        <td title="{{ entry.dataString1|date:"Y-m-d H:i:s" }}">
+                            {{ entry.dataString1|date:"Y-m-d H:i:s" }}
+                        </td>
+                        <td title="{{ entry.dataString2|default:"N/A" }}">
+                            {{ entry.dataString2|default:"N/A" }}
+                        </td>
+                        <td class="postal-code" title="{{ entry.dataString3 }}">
+                            {{ entry.dataString3 }}
+                        </td>
+                        <td title="{{ entry.dataString4|default:"-" }}">
+                            {{ entry.dataString4|truncatechars:20|default:"-" }}
+                        </td>
+                        <td title="{{ entry.dataString5|floatformat:"0"|default:"-" }}">
+                            {{ entry.dataString5|floatformat:"0"|default:"-" }}
+                        </td>
+                        <td title="{{ entry.unique_id }}">
+                            {{ entry.unique_id }}
+                        </td>
+                        <td title="Grade: {{ entry.letter_grade }}">
+                            <span class="grade-badge grade-{{ entry.letter_grade }}">
+                                {{ entry.letter_grade }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 40px;">
+                            No entries found
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            {% if entries.has_previous %}
+                <button onclick="window.location.href='?page={{ entries.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'">
+                    Previous
+                </button>
+            {% else %}
+                <button disabled>Previous</button>
+            {% endif %}
+    
+            <form method="GET" style="display: inline-block; margin: 0 10px;">
+                <input type="number" 
+                       name="page" 
+                       class="page-input" 
+                       value="{{ entries.number }}"
+                       min="1" 
+                       max="{{ entries.paginator.num_pages }}"
+                       onchange="this.form.submit()"
+                       aria-label="Page number">
+                {% if request.GET.q %}
+                    <input type="hidden" name="q" value="{{ request.GET.q }}">
+                {% endif %}
+                <span>of {{ entries.paginator.num_pages }}</span>
+            </form>
+    
+            {% if entries.has_next %}
+                <button onclick="window.location.href='?page={{ entries.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}'">
+                    Next
+                </button>
+            {% else %}
+                <button disabled>Next</button>
+            {% endif %}
+        </div>
+
+        <div class="timestamp">
+            Generated on {% now "Y-m-d H:i:s" %}
+        </div>
+    </div>
+
+    <div class="copy-notification" id="copyNotification">Copied to clipboard</div>
+
+    <script src="{% static 'js/dataentry_script.js' %}"></script>
+</body>
+</html>

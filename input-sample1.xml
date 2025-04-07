@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extremelysimpledata>
+	<item>
+		<string0>http://google.com/</string0>
+		<string1>12-12-2012 01:02:03</string1>
+		<string2>Frozen foods</string2>
+		<string3>4829 sd</string3>
+		<string4>Hello data, this is a test</string4>
+		<string5>44</string5>
+		<string6>001</string6>
+	</item>
+	<item>
+		<string0>https://pizza.com/file.asp</string0>
+		<string1>13:45PM 2013-02-05</string1>
+		<string2>Cranberries</string2>
+		<string3>4000OK</string3>
+		<string4>Hello data, this is a test but with additional words.</string4>
+		<string5>22.00</string5>
+		<string6>002</string6>
+	</item>
+	<item>
+		<string0>http://wikipedia.org/</string0>
+		<string1>2014-09-07T15:41:40Z</string1>
+		<string2>Cranberries</string2>
+		<string3>2349 XP</string3>
+		<string4>Tiny Data for everyone!</string4>
+		<string5>19002</string5>
+		<string6>003</string6>
+	</item>
+</extremelysimpledata>
